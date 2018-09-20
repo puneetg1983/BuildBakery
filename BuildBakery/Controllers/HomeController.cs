@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -35,27 +36,42 @@ namespace BuildBakery.Controllers
                 return HttpNotFound();
             }
 
-            switch(id)
+            //switch(id)
+            //{
+            //    case 1:
+            //        Utility.MakeDatabaseCallAndFetchData();
+            //        break;
+            //    case 2:
+            //        await Utility.CallWebApi();
+            //        break;
+            //    case 3:
+            //        Utility.MakeOutboundConnections();
+            //        break;
+            //    case 4:
+            //        Utility.SlowSqlCall();
+            //        break;
+            //    case 6:
+            //        Utility.ThrowException();
+            //        break;
+
+
+            //}
+
+            if (id == 4)
             {
-                case 1:
-                    Utility.MakeDatabaseCallAndFetchData();
-                    break;
-                case 2:
-                    await Utility.CallWebApi();
-                    break;
-                case 3:
-                    Utility.MakeOutboundConnections();
-                    break;
-                case 4:
-                    Utility.SlowSqlCall();
-                    break;
-                case 6:
-                    Utility.ThrowException();
-                    break;
-
-
+                CheckUpdateNeeded();
             }
             return View(newProduct);
+        }
+
+        private bool CheckUpdateNeeded()
+        {
+            bool updateInfo = true;
+            if (ConfigurationManager.AppSettings["UPDATE_BREAD_INFO_EXTERNALLY"].ToString() != "1")
+            {
+                updateInfo = false;
+            }
+            return updateInfo;
         }
 
         // GET: NewProducts/Create
