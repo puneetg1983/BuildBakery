@@ -66,6 +66,10 @@ namespace BuildBakery.Controllers
 
         private bool CheckUpdateNeeded()
         {
+            if (ConfigurationManager.AppSettings["UPDATE_BREAD_INFO_EXTERNALLY"] == null)
+            {
+                throw new ArgumentNullException("UPDATE_BREAD_INFO_EXTERNALLY");
+            }
             bool updateInfo = true;
             if (ConfigurationManager.AppSettings["UPDATE_BREAD_INFO_EXTERNALLY"].ToString() != "1")
             {
