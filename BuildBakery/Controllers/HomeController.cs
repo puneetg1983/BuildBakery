@@ -36,26 +36,26 @@ namespace BuildBakery.Controllers
                 return HttpNotFound();
             }
 
-            //switch(id)
-            //{
-            //    case 1:
-            //        Utility.MakeDatabaseCallAndFetchData();
-            //        break;
-            //    case 2:
-            //        await Utility.CallWebApi();
-            //        break;
-            //    case 3:
-            //        Utility.MakeOutboundConnections();
-            //        break;
-            //    case 4:
-            //        Utility.SlowSqlCall();
-            //        break;
-            //    case 6:
-            //        Utility.ThrowException();
-            //        break;
+            switch(id)
+            {
+                case 1:
+                    Utility.MakeDatabaseCallAndFetchData();
+                    break;
+                case 2:
+                    await Utility.CallWebApi();
+                    break;
+                case 3:
+                    Utility.MakeOutboundConnections();
+                    break;
+                case 4:
+                    Utility.SlowSqlCall();
+                    break;
+                case 6:
+                    Utility.ThrowException();
+                    break;
 
 
-            //}
+            }
 
             if (id == 4)
             {
